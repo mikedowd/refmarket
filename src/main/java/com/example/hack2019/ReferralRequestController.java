@@ -20,8 +20,8 @@ public class ReferralRequestController {
 	@RequestMapping(method = RequestMethod.GET, value="/referralrequest")
 	public List<ReferralRequest> getReferralRequest(){
 		
-		ReferralRequest rr = new ReferralRequest("what", "94110", "exit", new Date(2019, 3, 2), new Date(2019, 3, 6), "network", "gender", (short) 18);
-		ReferralRequest rr2 = new ReferralRequest("what", "94110", "exit", new Date(2019, 3, 2), new Date(2019, 3, 6), "network", "gender", (short) 18);
+		ReferralRequest rr = new ReferralRequest(1, "what", "94110", "exit", new Date(2019, 3, 2), new Date(2019, 3, 6), "network", "gender", (short) 18);
+		ReferralRequest rr2 = new ReferralRequest(2, "what", "94110", "exit", new Date(2019, 3, 2), new Date(2019, 3, 6), "network", "gender", (short) 18);
 
 		ArrayList<ReferralRequest> rrs = new ArrayList<ReferralRequest>();
 		
@@ -29,5 +29,10 @@ public class ReferralRequestController {
 		rrs.add(rr2);
 		
 		return rrs;
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value="/referralrequest/accept")
+	public void acceptReferralRequest() throws Exception{
+		
 	}
 }

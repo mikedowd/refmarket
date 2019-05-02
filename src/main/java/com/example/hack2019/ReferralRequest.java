@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class ReferralRequest {
 
+	private final long id; 
 	private final String orgURL;
 	private final String locationZip;
 	private final String specialty;
@@ -13,9 +14,10 @@ public class ReferralRequest {
 	private final String gender;
 	private final short age;
 
-	public ReferralRequest(String orgURL, String locationZip, String specialty, Date startDate, Date endDate,
+	public ReferralRequest(long id, String orgURL, String locationZip, String specialty, Date startDate, Date endDate,
 			String network, String gender, short age) {
 		super();
+		this.id = id;
 		this.orgURL = orgURL;
 		this.locationZip = locationZip;
 		this.specialty = specialty;
@@ -24,6 +26,10 @@ public class ReferralRequest {
 		this.network = network;
 		this.gender = gender;
 		this.age = age;
+	}
+	
+	public long getId() {
+		return id;
 	}
 	
 	public String getOrgURL() {
