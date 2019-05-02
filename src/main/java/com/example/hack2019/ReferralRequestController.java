@@ -28,6 +28,6 @@ public class ReferralRequestController {
 		rrs.add(rr);
 		rrs.add(rr2);
 		
-		return new ArrayList<ReferralRequest>();
+		return rrs;
 	}
 }
