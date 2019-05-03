@@ -88,7 +88,16 @@ public class ReferralRequestController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value="/referralrequests/{id}/accept")
-	public void acceptReferralRequest(@PathVariable String id) throws Exception{
-		
+	public void acceptReferralRequest(@PathVariable int id, @RequestParam(value="provider_url") String provider_url) throws Exception{
+		try (Connection connection = dataSource.getConnection()) {
+
+			PreparedStatement ps = connection.prepareStatement("UPDATE treatmentrequest SET provider_url=? WHERE id=?");
+			ps.setString(1, provider_url);
+			ps.setInt(2, id);
+			
+			ps.execute();
+			
+		} catch (Exception e) {
+		}
 	}
 }
