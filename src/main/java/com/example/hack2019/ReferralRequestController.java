@@ -72,10 +72,6 @@ public class ReferralRequestController {
 			ps.setDate(7, (java.sql.Date) availabledate);
 			
 			ResultSet rs = ps.executeQuery();
-
-//			public ReferralRequest(int id, String orgURL, String locationZip, String specialty, Date startDate, Date endDate,
-//					String network, String gender, short age) {
-
 			
 			while (rs.next()) {
 				ReferralRequest request = new ReferralRequest(
