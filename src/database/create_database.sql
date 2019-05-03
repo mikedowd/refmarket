@@ -21,10 +21,13 @@ alter table AcceptedRequests add provider_url varchar(1024) not null;
 CREATE OR REPLACE FUNCTION accept_request()
 RETURNS TRIGGER AS
 $BODY$
+  DECLARE Id int;
   BEGIN
     IF (new.provider_url is not null) THEN
-      INSERT INTO acceptedrequests(patient_url, provider_url, provider_name, provider_phone)
-	    VALUES (new.patient_url, new.provider_url, new.provider_name, new.provider_phone);
+ 	  INSERT INTO acceptedrequests(patient_url, provider_url, provider_name, provider_phone)
+	    VALUES (new.patient_url, new.provider_url, new.provider_name, new.provider_phone)
+		RETURNING acceptedrequests.Id INTO Id;
+	  PERFORM pg_notify('accepted_request', Id::varchar(20));
     END IF;
     RETURN NEW;
   END;
